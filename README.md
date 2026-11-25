@@ -2,6 +2,11 @@
 
 A production-grade, full-stack **Mini Helpdesk & Support Ticketing System** built with **Node.js, Express, TypeScript, PostgreSQL, Prisma, Next.js (App Router), and Tailwind CSS**. Designed with strict layered architecture, typed event-driven workflows, RBAC & ownership enforcement, and comprehensive integration testing.
 
+> **Live Deployment:**
+> - **Frontend App:** https://helpdesk.alirazakarimi.in
+> - **Backend API:** https://mini-helpdesk-system.onrender.com
+> - **Swagger API Docs:** https://mini-helpdesk-system.onrender.com/api/docs
+
 ---
 
 ## 1. Project Overview & Features
@@ -169,7 +174,7 @@ This starts PostgreSQL (with healthcheck + persistent volume), runs `prisma migr
 - **Database (Neon / Supabase)**: Provision a PostgreSQL database and copy the pooled/direct `DATABASE_URL`.
 - **Backend (Render / Railway)**:
   - Root directory: `backend`
-  - Build command: `npm ci && npx prisma generate && npm run build`
+  - Build command: `npm ci --include=dev && npx prisma generate && npm run build`
   - Start command: `npx prisma migrate deploy && npm start`
   - Set `NODE_ENV=production`, `DATABASE_URL`, `JWT_SECRET`, and `CORS_ORIGIN=https://your-vercel-app.vercel.app`.
 - **Frontend (Vercel)**:
