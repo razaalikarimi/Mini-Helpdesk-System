@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
@@ -23,6 +23,13 @@ export default function LoginPage() {
   const { login } = useAuth();
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
+
+  // Pre-warm the backend API (helpful when hosted on Render free tier)
+  useEffect(() => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+    const healthUrl = apiUrl.replace(/\/api\/v1\/?$/, '/health');
+    fetch(healthUrl, { mode: 'cors' }).catch(() => {});
+  }, []);
 
   const {
     register,
